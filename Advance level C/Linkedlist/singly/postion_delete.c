@@ -5,21 +5,20 @@ struct node{
 	struct node *next;
 };
 struct node *head = NULL;
-void postionDelete(){
-	int postion, i;
+void postionDelete(int postion){
+	int i;
 	struct node *ptr = head, *after, *delete_node;
-	printf("Enter a postion of node : ");
-	scanf("%d", &postion);
-	if(0 == postion-1){
+	if(1 == postion){
 		after = head -> next;
 		free(head);
 		head = after;
 	}else{
 		for(i = 1; i < postion-1; i++){
+			ptr = ptr -> next;
 			if(ptr == NULL){
 				printf("given node number is outof range");
 				return;
-			}ptr = ptr -> next;
+			}
 		}after = ptr -> next -> next;
 		delete_node = ptr -> next;
 		ptr -> next = after;
@@ -34,7 +33,7 @@ void printnode(){
 		temp = temp -> next;
 	}printf("NULL\n");
 }void main(){
-	int data, i, size;
+	int data, i, size, postion;
 	struct node *new_node, *ptr, *temp;
 	printf("Enter a number of nodes : ");
 	scanf("%d", &size);
@@ -55,7 +54,13 @@ void printnode(){
 		}
 	}printf("Before inserting node\n");
 	printnode();
-	postionDelete();
+	printf("Enter a postion of node : ");
+	scanf("%d", &postion);
+	if(postion > size || size > postion){
+		printf("Out of range\n");
+		return;
+	}postionDelete(postion);
 	printf("After inserting node\n");
 	printnode();
+	return;
 }

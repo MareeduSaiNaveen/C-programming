@@ -6,7 +6,7 @@ struct node{
 };
 int main(){
 	int data, value, i, find, count = 0;
-	struct node *new_node, *head = NULL, *ptr;
+	struct node *new_node, *head = NULL, *ptr, *temp;
 	printf("Enter a number of node : ");
 	scanf("%d", &value);
 
@@ -17,8 +17,16 @@ int main(){
 		scanf("%d", &data);
 
 		new_node -> data = data;
-		new_node -> next = head;
-		head = new_node;
+		new_node -> next = NULL;
+
+		if(head == NULL){
+			head = new_node;
+			temp = head;
+		}else{
+			while(temp -> next != NULL){
+				temp = temp -> next;
+			}temp -> next = new_node;
+		}
 	}
 	printf("Enter a data to find : ");
 	scanf("%d", &find);

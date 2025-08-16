@@ -6,21 +6,21 @@ struct node{
 };
 struct node *head = NULL;
 void insertmid(int size){
-	struct node *ptr, *temp, *before;
+	struct node *new_node, *slow, *fast;
 	int i, mid, data;
 	printf("Enter a data to insert at mid : ");
 	scanf("%d", &data);
-	ptr = (struct node*) malloc(sizeof(struct node));
-	ptr -> data = data;
-	ptr -> next = NULL;
-
-	temp = head;
-	mid = size/2;
-	for(i = 0; i < mid; i++){
-		temp = temp -> next;
-	}before = temp -> next;
-	temp -> next = ptr;
-	ptr -> next = before;
+	new_node = (struct node*) malloc(sizeof(struct node));
+	new_node -> data = data;
+	new_node -> next = NULL;
+	
+	slow = head;
+	fast = head -> next;;
+	while(fast !=  NULL && fast -> next != NULL){
+		slow = slow -> next;
+		fast = fast -> next -> next;
+	}new_node -> next = slow -> next;
+	slow -> next = new_node;
 }void printnode(){
 	printf("HEAD -> ");
 	struct node *temp = head;

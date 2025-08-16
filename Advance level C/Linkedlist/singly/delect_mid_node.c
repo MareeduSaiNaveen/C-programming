@@ -4,8 +4,24 @@ struct node{
 	int data;
 	struct node *next;
 };
-int main(){
-	struct node *new_node, *ptr, *head = NULL, *next, *pre, *delect_node;
+void printnode(struct node *ptr){
+	printf("HEAD -> ");
+	while(ptr != 0){
+		printf("%d -> ", ptr -> data);
+		ptr = ptr -> next;
+	}printf("NULL\n");
+}void delete_mid(struct node *ptr){
+	struct node *prev_node, *fast, *slow;
+	slow = ptr;
+	fast = ptr -> next;
+	while(fast != NULL && fast -> next != NULL){
+		prev_node = slow;
+		slow = slow -> next;
+		fast = fast -> next -> next;
+	}prev_node -> next = slow -> next;
+	free(slow);
+}int main(){
+	struct node *new_node, *head = NULL, *temp;;
 	int NoOfNodes, data, mid, i;
 	printf("Enter a number of node's : ");
 	scanf("%d", &NoOfNodes);
@@ -13,21 +29,16 @@ int main(){
 		new_node = (struct node*) malloc(sizeof(struct node));
 		printf("Enter a data of node %d : ", i);
 		scanf("%d", &data);
-		 new_node -> data = data;
-		 new_node -> next = head;
-		 head = new_node;
-	}
-	mid = NoOfNodes / 2;
-	ptr = head;
-	for(i = 0; i < mid-1; i++){
-		ptr = ptr -> next;
-	}delect_node = ptr -> next;
-	ptr -> next = ptr -> next -> next;
-	free(delect_node);
-	ptr = head;
-	printf("HEAD -> ");
-	while(ptr != 0){
-		printf("%d -> ", ptr -> data);
-		ptr = ptr -> next;
-	}printf("NULL\n");
+		new_node -> data = data;
+		new_node -> next = NULL;
+		if(head == NULL){
+			head = new_node;
+		}else{
+			temp = head;
+			while(temp -> next != NULL){
+				temp = temp -> next;
+			}temp -> next = new_node;;
+		}
+	}delete_mid(head);
+	printnode(head);
 }

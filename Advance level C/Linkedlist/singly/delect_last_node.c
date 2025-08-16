@@ -6,7 +6,7 @@ struct node{
 };
 int main(){
 	int i, value, data;
-	struct node *new_node, *head = NULL, *ptr, *delect;
+	struct node *new_node, *head = NULL, *ptr, *delect, *temp;
 
 	printf("Enter a number of node : ");
 	scanf("%d",&value);
@@ -18,8 +18,16 @@ int main(){
 		scanf("%d", &data);
 		
 		new_node -> data = data;
-		new_node -> next = head;
-		head = new_node;
+		new_node -> next = NULL;
+
+		if(head == NULL){
+			head = new_node;
+		}else{
+			temp = head;
+			while(temp -> next != NULL){
+				temp = temp -> next;
+			}temp -> next = new_node;
+		}
 	}
 	ptr = head;
 	while(ptr -> next -> next != NULL){
@@ -32,7 +40,7 @@ int main(){
 	ptr = head;
 	printf("HEAD -> ");
 	while(ptr != NULL){
-		printf("%d ->", ptr -> data);
+		printf("%d -> ", ptr -> data);
 		ptr = ptr -> next;
 	}printf(" NULL\n");
 	return 0;

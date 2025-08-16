@@ -6,7 +6,7 @@ struct node{
 };
 int main(){
 	int data, value, i;
-	struct node *ptr, *new_node, *head = NULL, *prev_ptr, *curr_ptr, *next_ptr;
+	struct node *ptr, *temp, *new_node, *head = NULL, *prev_ptr, *curr_ptr, *next_ptr;
 	printf("Enter a number of nodes's : ");
 	scanf("%d",&value);
 	for(i = 0; i < value; i++){
@@ -16,10 +16,16 @@ int main(){
 		scanf("%d", &data);
 
 		new_node -> data = data;
-		new_node -> next = head;
-		head = new_node;
-	}
-	prev_ptr = NULL;
+		new_node -> next = NULL;
+		if(head == NULL){
+			head = new_node;
+			temp = new_node;
+		}else{
+			while(temp -> next != NULL){
+				temp = temp -> next;
+			}temp -> next = new_node;
+		}
+	}prev_ptr = NULL;
 	curr_ptr = head;
 	while(curr_ptr  != NULL){
 		next_ptr = curr_ptr -> next;

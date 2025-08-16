@@ -6,7 +6,7 @@ int lenth(int data){
 		data = data >> 1;
 	}return count;
 }int ispalindrome(int data){
-	int len, i, rev, temp;
+	int len, i, rev = 0, temp;
 	temp = data;
 	len = lenth(data);
 	for(i = 0; i < len; i++){

@@ -6,7 +6,6 @@ int main(){
 	scanf("%d", &data);
 	printf("Enter a bit : ");
 	scanf("%d", &bit);
-	bit -= 1;
 	mask = (1 << bit);
 	result = mask & data;
 	printf("Rersult = %d\n", result);

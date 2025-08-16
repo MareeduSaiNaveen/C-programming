@@ -6,8 +6,10 @@ void main(void){
 	scanf("%d", &data);
 	printf("Enter a bit to check : ");
 	scanf("%d", &bit);
-	bit -= 1;
 	mask |= (1 << bit);
 	result = ans(data, mask);
-	printf("Result = %d", result);
+	if(result)
+		printf("Given bit is set\n");
+	else
+		printf("Given bit not set\n");
 }

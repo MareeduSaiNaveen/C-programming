@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main(){
-	int size, j, i;
+	int size, j = 0, i, count, q = 0;
 	printf("Enter a size : ");
 	scanf("%d", &size);
 	int arr[size];
@@ -8,21 +8,18 @@ int main(){
 	printf("Enter a elements in array : ");
 	for(i = 0; i < size; i++){
 		scanf("%d", &arr[i]);
-		dum[i] = 0;
 	}for(i = 0; i < size; i++){
-		if(dum[i] == 1){
-			continue;
-		}for(j = i+1; j < size; j++){
+		count = 0;
+		for(j = i+1; j < size; j++){
 			if(arr[i] == arr[j]){
-				dum[j] = 1;
-				dum[i] = 1;
+				count = 1;
 			}
+		}if(!count){
+			arr[q++] = arr[i];
 		}
 	}printf("Non-Repeated elements in array  : ");
-	for(i = 0; i < size; i++){
-		if(dum[i] == 0){
-			printf("%d ", arr[i]);
-		}
+	for(i = 0; i < q; i++){
+		printf("%d ", arr[i]);
 	}printf("\n");
 	return 0;
 }

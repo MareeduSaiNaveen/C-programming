@@ -1,10 +1,18 @@
 #include<stdio.h>
+#include <limits.h>
+
 int main(){
 	int i, len, small, secsmall;
-	int arr[] = {20, -8, 55, 3, -10, 18};
-	small = arr[0];
+	printf("Enter a size of array : ");
+	scanf("%d",&len);
+	int arr[len];
+	printf("enter a elemnts in array : ");
+	for(i = 0; i < len; i++){
+		scanf("%d", &arr[i]);
+	}small = arr[0];
+	secsmall = INT_MAX;
 	len = sizeof(arr)/sizeof(arr[0]);
-	for(i = 0; i <= len-1; i++){
+	for(i = 0; i <= len - 1; i++){
 		if(small > arr[i]){
 			secsmall = small;
 			small = arr[i];

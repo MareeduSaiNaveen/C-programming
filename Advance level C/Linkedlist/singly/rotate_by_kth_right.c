@@ -11,7 +11,8 @@ struct node *rotate(struct node *head, int size){
 	scanf("%d", &kth);
 	if(kth == 0){
 		return head;
-	}for(i = 1; i <=size - kth; i++){
+	}kth = kth % size;
+	for(i = 1; i <=size - kth; i++){
 		prev = right;
 		right = right -> next;
 	}prev -> next = NULL;

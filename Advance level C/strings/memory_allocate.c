@@ -3,6 +3,7 @@
 #include<stdlib.h>
 int main(){
 	char *str;
+	int size;
 	printf("Enter a string : ");
 	scanf("%d", &size);
 	str = malloc(sizeof(char) * sizeof(int));

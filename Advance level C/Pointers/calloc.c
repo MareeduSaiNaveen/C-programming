@@ -12,7 +12,7 @@ int main(){
 	for(i = 0; i < 10; i++){
 		printf("%d ", *(ptr+i));
 	}printf("\n");
-	*(ptr+6) = ;
+	*(ptr+6) = 60;
 	*(ptr+7) = 70;
 	free(ptr);
 	return 0;

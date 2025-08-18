@@ -31,6 +31,7 @@ int main(){
 		while(next_node != NULL){
 			if(next_node -> data == temp -> data && next_node != temp){
 				prev_node -> next = next_node -> next;
+				free(next_node);
 			}prev_node = next_node;
 			next_node = next_node -> next;
 		}temp = temp -> next;

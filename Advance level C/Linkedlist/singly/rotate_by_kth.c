@@ -26,6 +26,7 @@ int main(){
 			}temp -> next = new_node;
 		}
 	}while(temp != NULL){
+		struct node *next_node, *prev_node;
 		next_node = temp -> next;
 		prev_node = temp;
 		while(next_node != NULL){

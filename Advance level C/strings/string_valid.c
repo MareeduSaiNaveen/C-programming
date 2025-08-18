@@ -25,5 +25,5 @@ int check(char open, char close){
 		printf("Valid string\n");
 	}else{
 		printf("Not valied\n");
-	return 0;
+	}return 0;
 }
